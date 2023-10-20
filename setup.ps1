@@ -1,5 +1,5 @@
 #If winget is not installed
-if (-not (Get-Command gait -errorAction SilentlyContinue)) {
+if (-not (Get-Command winget -errorAction SilentlyContinue)) {
     #Install winget
     Write-Host "Installing WinGet"
     $progressPreference = 'silentlyContinue'
