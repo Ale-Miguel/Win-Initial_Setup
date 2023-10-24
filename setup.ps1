@@ -25,7 +25,8 @@ function Install-DefaultApps (){
     )
 
     foreach($app in $DefaultApps){
-        winget install -e --id $app --disable-interactivity --accept-package-agreements   
+        Write-Host "Installing $app"
+        winget install -e --id $app --disable-interactivity --accept-package-agreements --accept-source-agreements 
     }
 
 }
@@ -38,17 +39,18 @@ function Install-VMs () {
     )
 
     foreach($app in $VMs){
-        winget install -e --id $app --disable-interactivity --accept-package-agreements   
+        Write-Host "Installing $app"
+        winget install -e --id $app --disable-interactivity --accept-package-agreements --accept-source-agreements 
     }
 }
 
 function Install-LabEnv {
-    winget install -e --id Python.Python.3.11 --disable-interactivity --accept-package-agreements   
+    winget install -e --id Python.Python.3.11 --disable-interactivity --accept-package-agreements --accept-source-agreements
 }
 
 function Install-WSL (){
     wsl --install;
 
-    winget install -e --id Canonical.Ubuntu.2204 --disable-interactivity
+    winget install -e --id Canonical.Ubuntu.2204 --disable-interactivity --accept-package-agreements --accept-source-agreements
     winget install -e --id kalilinux.kalilinux
 }
