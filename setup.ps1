@@ -21,6 +21,7 @@ function Install-DefaultApps (){
         "Microsoft.VisualStudioCode",
         "Mozilla.Firefox",
         "Brave.Brave",
+        "Microsoft.WindowsTerminal",
         "Git.Git"
     )
 
