@@ -94,3 +94,13 @@ function Remove-Bloatware (){
 
     }
 }
+
+function Set-VisualConf () {
+    #Set dark mode
+    Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0
+}
+
+function Set-LabOptimizations (){
+    #Enalbe Fastboot
+    REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /V HiberbootEnabled /T REG_dWORD /D 0 /F
+}
