@@ -54,3 +54,43 @@ function Install-WSL (){
     winget install -e --id Canonical.Ubuntu.2204 --disable-interactivity --accept-package-agreements --accept-source-agreements
     winget install -e --id kalilinux.kalilinux
 }
+
+function Remove-Bloatware (){
+    $Packages = 
+    '*3dbuilder*',
+    '*549981C3F5F10*', # Cortana
+    '*Bing*', # Money, Sports, News, Finance & Weather
+    #'*Calculator*',
+    '*Camera*',
+    '*CommunicationsApps*', # Mail & Calendar
+    '*Feedback*',
+    '*Gaming*',
+    '*GetHelp*',
+    '*GetStarted*', # Tips app
+    #'*SecHealthUI*', # Windows Defender
+    '*Maps*',
+    '*MSPaint*',
+    '*MixedReality*',
+    '*OfficeHub*',
+    '*OneDrive*',
+    '*MSPaint*',
+    '*People*',
+    '*Phone*', # Phone Companion
+    '*ScreenSketch*', # Snipping Tool
+    '*Skype*',
+    '*Solitaire*',
+    '*SoundRecorder*',
+    '*StickyNotes*',
+    '*Teams*',
+    '*todos*',
+    '*WindowsAlarms*',
+    '*windowsstore*',
+    '*Xbox*',
+    '*Zune*'
+
+    ForEach($Package in $Packages){
+
+        Get-AppxProvisionedPackage -Online | Where-Object {$_.PackageName -like "$Package"} | Remove-AppxProvisionedPackage -Online -AllUsers
+
+    }
+}
